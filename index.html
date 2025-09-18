@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DashBoard Econômico</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="dash-side-bar">
+      <h1>Dashboards de CriptoMoedas</h1>
+    
+      <div class="dash-form">
+        <div class="coin-form">
+          <span id="f-coins">Moedas Selecionadas</span>
+          <div class="coin-input" id="coinInput" onclick="input.focus()">
+            <div class="coin_symbol">SOL<span>x</span></div><div class="coin_symbol">BNB<span>x</span></div><div class="coin_symbol">XRP<span>x</span></div><div class="coin_symbol">ETH<span>x</span></div>
+        
+            <input type="text" id="input" placeholder="Digite o símbolo da moeda..">
+          </div>
+        </div>
+        
+        <div class="date-form">
+          <div class="date-select" id="dateSelec">
+            <span id="f-date">Período</span>
+            <select name="date" id="set-date">
+              <option value="day">Dia</option>
+              <option value="week">Semana</option>
+              <option value="month">Mês</option>
+            </select>
+          </div>
+        </div>
+
+          <div class="qtd-form">
+            <span id="f-qtd">Quantidade</span>
+            <input type="number" class="date-input" id="dateInput" value="1" placeholder="Valor...">
+          </div>
+        </div>
+
+        <div class="btn-filter">
+            <button id="filter">Filtrar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="graphs">
+      <div class="lineGraph">
+        <canvas id="lineGraph"></canvas>
+      </div>
+
+      <div class="barGraph">
+        <canvas id="barGraph"></canvas>
+      </div>
+
+      <div class="doughNut">
+        <canvas id="doughnut"></canvas>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/graph.js"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+body {
+  position: flex;
+  width: 99%;
+  height: 100%;
+  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*      SIDE BAR      */
+
+.dash-side-bar {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 20%;
+  height: 95.8%;
+  background-image: url('./img/side_bar_bg.png');
+  color: #ffffff;
+
+  padding: 2% 0 0 1.1%;
+}
+
+.dash-side-bar h1 {
+  padding-top: 10%;
+  font-size: 1.7em;
+}
+
+.dash-form {
+  padding: 15% 0 0 0;
+}
+
+/*    SIDEBAR - SYMBOL   */
+
+.coin-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  width: 90%;
+  min-height: 5%;
+  
+  padding: 1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: text;
+
+  background-color: #ffffff;
+}
+
+.coin-input input {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 40%;
+  font-size: 16px;
+  padding: 2%;
+}
+
+.coin_symbol {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  margin: 3px;
+  border-radius: 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.coin_symbol span {
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/*    SIDEBAR - DATE   */
+
+.date-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-height: 40px;
+  width: 10%;
+  cursor: text;
+}
+
+.date-select {
+  padding-top: 10%;
+  font-size: 1.0em;
+}
+
+.date-select select{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-height: 40px;
+  width: 20%;
+  cursor: text;
+}
+
+.qtd-form {
+  padding-top: 10%
+}
+
+/*    SIDEBAR - BUTTON   */
+
+.btn-filter{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 15%;
+}
+
+button#filter  {
+  font-size: 1.3em;
+  width: 35%;
+}
+/*      GRAPH      */
+
+.graphs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+
+  top: 5%;
+  left: 25%;
+  width: 73%;
+  height: 100%;
+}
+
+#lineGraph {
+  width: 45%;
+}
+
+.lineGraph {
+  position: relative;
+  width: 100%;
+
+  padding-top: 5%
+}
+
+.barGraph {
+  display: flex;
+  width: 50%;
+
+  padding-top: 8%;
+}
+
+.doughNut {
+  display: flex;
+  width: 30%;
+
+  padding: 5% 0 0 5%;
+}
