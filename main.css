@@ -10,10 +10,10 @@ body {
 
 .dash-side-bar {
   position: absolute;
-  top: 0%;
+  bottom: 0%;
   left: 0%;
   width: 20%;
-  height: 95.8%;
+  height: 100%;
   background-image: url('./img/side_bar_bg.png');
   color: #ffffff;
 
@@ -39,7 +39,8 @@ body {
   width: 90%;
   min-height: 5%;
   
-  padding: 1%;
+  padding: 1.5%;
+  margin-top: 2%;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: text;
@@ -75,52 +76,88 @@ body {
 
 /*    SIDEBAR - DATE   */
 
+.dash-form {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.1em;
+}
+
+.date-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15% 25% 0 0;
+}
+
 .date-input {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  padding: 1%;
   border: 1px solid #ccc;
   border-radius: 5px;
   min-height: 40px;
-  width: 10%;
+  width: 80%;
   cursor: text;
-}
-
-.date-select {
-  padding-top: 10%;
-  font-size: 1.0em;
 }
 
 .date-select select{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  padding: 5px;
+
   border: 1px solid #ccc;
   border-radius: 5px;
-  min-height: 40px;
-  width: 20%;
-  cursor: text;
+
+  margin-top: 10%;
+
+  width: 170%;
+  height: 60%;
+  cursor: default;
+
+  font-size: 0.8em;
 }
 
 .qtd-form {
-  padding-top: 10%
+  padding: 15% 0 0 4%;
+}
+
+.qtd-form input {
+  width: 80%;
+  padding-left: 5%;
+  margin-top: 4%;
+  font-size: 0.8em;
 }
 
 /*    SIDEBAR - BUTTON   */
 
-.btn-filter{
+.btn-filter, .btn-reset{
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding-top: 15%;
+  padding: 30% 0 0 18%;
+  width: 100%;
 }
 
-button#filter  {
+.btn-reset{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 2%;
+}
+
+button#filter, button#reset {
   font-size: 1.3em;
-  width: 35%;
+  width: 46%;
+
+  border: 2px solid #302b91;
+  border-radius: 5px;
+
+  color: #413d83;
+
+  cursor: pointer;
+}
+
+button#filter:hover, button#reset:hover{
+  background-color: #aca9db;
 }
 /*      GRAPH      */
 
