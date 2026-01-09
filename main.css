@@ -1,77 +1,99 @@
+/* ===== RESET / BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  position: flex;
-  width: 99%;
-  height: 100%;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+
   font-size: 17px;
   font-family: 'Poppins', sans-serif;
 }
 
+/* ===== LOGO ===== */
 .logo {
-  width: 110%;
-  max-height: 50%;
-  margin: 0 0 -15% -10%;
+  width: 100%;
+  margin: 10% 0 20% 0;
 }
 
-/*      SIDE BAR      */
-
+/* ===== SIDEBAR ===== */
 .dash-side-bar {
-  position: absolute;
-  bottom: 0%;
-  left: 0%;
-  width: 20%;
-  height: 100%;
-  background-image: url('./img/side_bar_bg.png');
-  color: #ffffff;
+  display: flex;
+  flex-direction: column;
 
-  padding: 2% 0 0 1.1%;
+  width: 30%;
+  min-width: 260px;
+  height: 100%;
+
+  background-image: url('./img/side_bar_bg.png');
+  background-size: cover;
+
+  color: #ffffff;
+  padding: 20px;
 }
 
 .dash-side-bar h1 {
-  padding-top: 10%;
   font-size: 1.7em;
+  margin-bottom: 30px;
 }
 
+/* ===== FORM ===== */
 .dash-form {
-  padding: 15% 0 0 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3em;
+  gap: 25px;
 }
 
-/*    SIDEBAR - SYMBOL   */
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
 
+/* ===== COIN INPUT ===== */
 .coin-input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  width: 90%;
-  min-height: 5%;
-  
-  padding: 1.5%;
-  margin-top: 2%;
+  width: 100%;
+  min-height: 45px;
+
+  margin: 3% 0 7% 0;
+
+  padding: 4%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  cursor: text;
 
   background-color: #ffffff;
+  cursor: text;
 }
 
 .coin-input input {
+  flex: 1;
+  min-width: 120px;
+
   border: none;
   outline: none;
-  flex: 1;
-  min-width: 40%;
+
   font-size: 16px;
-  padding: 2%;
 }
 
 .coin_symbol {
+  display: flex;
+  align-items: center;
+
   background-color: #007bff;
   color: white;
+
   padding: 5px 10px;
   margin: 3px;
   border-radius: 15px;
   font-size: 14px;
-  display: flex;
-  align-items: center;
 }
 
 .coin_symbol span {
@@ -80,126 +102,116 @@ body {
   font-weight: bold;
 }
 
-/*    SIDEBAR - DATE   */
-
-.dash-form {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1.1em;
-}
-
+/* ===== DATE / SELECT ===== */
 .date-form {
   display: flex;
-  flex-wrap: wrap;
-  padding: 15% 25% 0 0;
+  flex-direction: column;
+  gap: 10px;
+  flex: 2;
 }
 
 .date-input {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+
   border: 1px solid #ccc;
   border-radius: 5px;
-  min-height: 40px;
-  width: 80%;
-  cursor: text;
+  padding: 5px;
 }
 
-.date-select select{
-  display: flex;
-  flex-wrap: wrap;
+.date-select select {
+  width: 100%;
+  height: 100%;
+
+  margin-top: 5%;
 
   border: 1px solid #ccc;
   border-radius: 5px;
-
-  margin-top: 10%;
-
-  width: 170%;
-  height: 60%;
-  cursor: default;
 
   font-size: 0.8em;
 }
 
+/* ===== QUANTIDADE ===== */
 .qtd-form {
-  padding: 15% 0 0 4%;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  flex-direction: column;
+  flex: 1;
 }
 
 .qtd-form input {
-  width: 80%;
-  padding-left: 5%;
-  margin-top: 4%;
+  padding: 8%;
+  border: 1px solid #ccc;
+
+  margin-top: 3.8%;
+
+  border-radius: 5px;
+
   font-size: 0.8em;
 }
 
-/*    SIDEBAR - BUTTON   */
-
-.btn-filter, .btn-reset{
-  position: relative;
+/* ===== BUTTONS ===== */
+.btn-filter,
+.btn-reset {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 30% 0 0 20%;
-  width: 100%;
+  gap: 10px;
 }
 
-.btn-reset{
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding-top: 2%;
-}
+button#filter,
+button#reset {
+  flex: 1;
+  font-size: 1.1em;
 
-button#filter, button#reset {
-  font-size: 1.3em;
-  width: 46%;
+  padding: 10px;
 
   border: 2px solid #302b91;
   border-radius: 5px;
 
   color: #413d83;
+  background-color: transparent;
 
   cursor: pointer;
 }
 
-button#filter:hover, button#reset:hover{
+button#filter:hover,
+button#reset:hover {
   background-color: #aca9db;
 }
-/*      GRAPH      */
 
+/* ===== MAIN CONTENT ===== */
 .graphs {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 5%;
+  align-content: flex-start;
+  gap: 40px;
 
-  top: 5%;
-  left: 25%;
-  width: 73%;
+  width: 100%;
   height: 100%;
+
+  padding: 40px;
+  overflow-y: auto;
+}
+
+/* ===== GRAPHS ===== */
+.lineGraph,
+.barGraph,
+.doughNut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #lineGraph {
   width: 45%;
 }
 
-.lineGraph {
-  position: relative;
-  width: 100%;
-
-  padding-top: 5%
-}
-
 .barGraph {
-  display: flex;
-  width: 50%;
-
-  padding-top: 8%;
+  width: 45%;
 }
 
 .doughNut {
-  display: flex;
   width: 30%;
-
-  padding: 5% 0 0 5%;
 }
