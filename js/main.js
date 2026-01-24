@@ -40,12 +40,27 @@ input.addEventListener('keydown', e => {
 // Pega valor DOM de moedas e data
 const filter = document.getElementById('filter');
 const coins = document.getElementsByClassName('coin_symbol')
+const titles = document.querySelectorAll('.graphs #graph-title')
 
 filter.addEventListener('click', e => {
+  //Removendo 'Hidden' dos títulos
+  titles.forEach(titles => {
+    titles.classList.remove('hidden');
+  })
+
   // Pegando informacoes de data
   const date = document.getElementById('set-date').value
   const dateValue = document.getElementById('dateInput').value
   let dateCalc = dateValue
+
+  // Define data de acordo com o selecionado
+  if(date == 'week'){
+    dateCalc*=7
+  }
+
+  if(date == 'month'){
+    dateCalc*=30
+  }
 
   // Solicitando infor da moeda de todas selecionadas
   let coinName = []
@@ -55,17 +70,8 @@ filter.addEventListener('click', e => {
     coinFormatted = coinFormatted.toUpperCase()
 
     coinName.push(coinFormatted)
-
-    // Define data de acordo com o selecionado
-    if(date == 'week'){
-      dateCalc*=7
-    }
-
-    if(date == 'month'){
-      dateCalc*=30
-    }
-
   }
+  
 
   // Chama API para montagem de grafico
   CallAPI(coinName, dateCalc)

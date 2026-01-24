@@ -26,7 +26,7 @@
               placeholder="Digite o símbolo da moeda.."
             />
           </div>
-        </div>
+        </div>  
 
         <div class="form-row">
           <div class="date-form">
@@ -63,14 +63,23 @@
 
     <div class="graphs">
       <div class="lineGraph">
+        <div id="graph-title" class="hidden">
+          Valor de Fechamento
+        </div>
         <canvas id="lineGraph"></canvas>
       </div>
 
       <div class="barGraph">
+        <div id="graph-title" class="hidden">
+          Aumento De Valor
+        </div>
         <canvas id="barGraph"></canvas>
       </div>
 
       <div class="doughNut">
+        <div id="graph-title" class="hidden">
+          Volume de Venda
+        </div>
         <canvas id="doughnut"></canvas>
       </div>
     </div>

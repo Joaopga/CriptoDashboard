@@ -18,9 +18,6 @@ function bulildGraph(coinName, APIdata){
     const lineGraph = document.getElementById('lineGraph').getContext('2d')
     const bgColors = ['#514da4','#ff6f61','#4db6ac','#ffd700','#d32f2f','#1976d2','#8e24aa','#ff8f00','#388e3c','#c2185b']
 
-    
-    console.log(APIdata)
-
     let coinSet = []
     for (let i = 0; i < APIdata.length; i++){
         coinSet.push({APIdata})
