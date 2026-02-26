@@ -21,8 +21,3 @@ export async function req(coin, date) {
     "123.45",           // Volume - 5
     1719964799999,      // Close time - 6
 */
-
-// IDEIA:
-// GRAFICO FECHAMENTO (LINE)
-// GRAFICO DE QUEM MAIS AUMENTOU NO PERÍODO (BAR)
-// GRAFICO VOLUME DE VENDA (DOUGHNUT)
