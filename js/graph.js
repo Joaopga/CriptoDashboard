@@ -22,7 +22,6 @@ function variVal(APIdata, dateCalc) {
     varTotal.push(varDia.toFixed(2));
   }
 
-  console.log(varTotal);
   return varTotal;
 }
 
@@ -71,12 +70,17 @@ function bulildGraph(coinName, APIdata, dateCalc) {
   console.log(APIdata);
 
   // Criacao de Array para gráfico dividido por dias
-  const dayLabels = Array.from(
-    {
-      length: dateCalc,
-    },
-    (_, i) => `Dia ${i + 1}`,
-  );
+  const hoje = new Date();
+
+  const dayLabels = Array.from({ length: dateCalc }, (_, i) => {
+    const d = new Date(hoje);
+    d.setDate(hoje.getDate() - dateCalc + i);
+
+    const dia = String(d.getDate()).padStart(2, "0");
+    const mes = String(d.getMonth() + 1).padStart(2, "0");
+
+    return `${dia}/${mes}`;
+  });
 
   const datasets = APIdata.map((coinData, i) => ({
     label: coinName[i],
@@ -96,6 +100,19 @@ function bulildGraph(coinName, APIdata, dateCalc) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+
+      scales: {
+        y: {
+          ticks: {
+            callback: (value) =>
+              new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(value),
+          },
+        },
+      },
+
       plugins: {
         legend: {
           display: true,
@@ -133,6 +150,23 @@ function bulildGraph(coinName, APIdata, dateCalc) {
       ],
     },
     options: {
+      interaction: {
+        mode: "index",
+        intersect: false,
+      },
+      scales: {
+        y: {
+          ticks: {
+            callback: (value) => value + "%",
+
+            color: function (context) {
+              const v = context.tick.value;
+              if (v === 0) return "#000000";
+              return v > 0 ? "#22c55e" : "#ef4444";
+            },
+          },
+        },
+      },
       plugins: {
         legend: {
           display: false, // remover a legenda
