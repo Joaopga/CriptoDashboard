@@ -21,3 +21,7 @@ export async function req(coin, date) {
     "123.45",           // Volume - 5
     1719964799999,      // Close time - 6
 */
+
+
+
+//C:/Users/jp_12/Desktop/Projetos/Sites/Dashboard

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -26,7 +26,7 @@
               placeholder="Digite o símbolo da moeda.."
             />
           </div>
-        </div>  
+        </div>
 
         <div class="form-row">
           <div class="date-form">
@@ -46,40 +46,38 @@
               type="number"
               class="date-input"
               id="dateInput"
-              value="3"
+              value="1"
               placeholder="Valor..."
             />
           </div>
         </div>
 
-        <div class="btn-filter">
-          <button id="filter">Filtrar</button>
-        </div>
-        <div class="btn-reset">
-          <button id="reset">Resetar Filtro</button>
+        <div id="errMsg" class="hidden">A data precisa ser maior que um dia</div>
+
+        <div class="buttonsArea">
+          <div class="btn-filter">
+            <button id="filter">Filtrar</button>
+          </div>
+          <div class="btn-reset">
+            <button id="reset">Resetar Filtro</button>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="graphs">
       <div class="lineGraph">
-        <div id="graph-title" class="hidden">
-          Valor de Fechamento
-        </div>
+        <div id="graph-title" class="hidden">Valor de Fechamento</div>
         <canvas id="lineGraph"></canvas>
       </div>
 
       <div class="barGraph">
-        <div id="graph-title" class="hidden">
-          Variação No Valor (%)
-        </div>
+        <div id="graph-title" class="hidden">Variação No Valor (%)</div>
         <canvas id="barGraph"></canvas>
       </div>
 
       <div class="doughNut">
-        <div id="graph-title" class="hidden">
-          Volume de Vendas
-        </div>
+        <div id="graph-title" class="hidden">Volume de Vendas</div>
         <canvas id="doughnut"></canvas>
       </div>
     </div>
