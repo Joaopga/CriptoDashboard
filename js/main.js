@@ -5,14 +5,30 @@ const input = document.getElementById("input");
 const coinInput = document.getElementById("coinInput");
 let coin;
 
-function dateErr(action) {
-  let errMsg = document.getElementById("errMsg");
+function dateErr(errCod) {
+  let formRow = document.querySelector(".form-row");
+  let errMsg = document.createElement("div");
+  let errMsgDiv = document.querySelector("#errMsg");
+  let errTxt = "";
+  errMsg.id = "errMsg";
 
-  if (action === "add") {
-    errMsg.classList.remove("hidden");
-  } else {
-    errMsg.classList.add("hidden");
+  if (errCod != "remErr" && !document.querySelector("#errMsg")) {
+    switch (errCod) {
+      case 0:
+        errTxt = "Deve ser escolhida ao menos 1 moeda";
+        break;
+
+      case 1:
+        errTxt = "A data precisa ser maior que um dia";
+        break;
+    }
+
+    errMsg.innerHTML = errTxt;
+    formRow.insertAdjacentElement("afterend", errMsg);
+
+    return;
   }
+  if ((errMsgDiv != null) & (errCod === "remErr")) errMsgDiv.remove();
 }
 
 input.addEventListener("keydown", (e) => {
@@ -57,11 +73,12 @@ filter.addEventListener("click", (e) => {
   const dateValue = document.getElementById("dateInput").value;
   let dateCalc = dateValue;
 
-  // Valida se data eh maior que 1
-  if (dateCalc <= 1) {
-    dateErr("add");
+  // Valida se foi digitada pelo menos 1 moeda
+  if (coins.length < 1) {
+    dateErr(0);
   } else {
-    dateErr("remove");
+    dateErr("remErr");
+
     // Define data de acordo com o selecionado
     if (date == "week") {
       dateCalc *= 7;
@@ -71,22 +88,29 @@ filter.addEventListener("click", (e) => {
       dateCalc *= 30;
     }
 
-    // Solicitando infor da moeda de todas selecionadas
-    let coinName = [];
-    for (let i = 0; i < coins.length; i++) {
-      let html = coins[i].innerHTML;
-      let coinFormatted = html.split("<span")[0].trim();
-      coinFormatted = coinFormatted.toUpperCase();
+    // Valida se data eh maior que 1
+    if (dateCalc <= 1) {
+      dateErr(1);
+    } else {
+      dateErr("remErr");
 
-      coinName.push(coinFormatted);
+      // Solicitando info de todas as moedas selecionadas
+      let coinName = [];
+      for (let i = 0; i < coins.length; i++) {
+        let html = coins[i].innerHTML;
+        let coinFormatted = html.split("<span")[0].trim();
+        coinFormatted = coinFormatted.toUpperCase();
+
+        coinName.push(coinFormatted);
+      }
+
+      // Chama API para montagem de grafico
+      CallAPI(coinName, dateCalc);
+
+      //Removendo 'Hidden' dos títulos
+      titles.forEach((titles) => {
+        titles.classList.remove("hidden");
+      });
     }
-
-    // Chama API para montagem de grafico
-    CallAPI(coinName, dateCalc);
-
-    //Removendo 'Hidden' dos títulos
-    titles.forEach((titles) => {
-      titles.classList.remove("hidden");
-    });
   }
 });
