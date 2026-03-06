@@ -184,7 +184,11 @@ function bulildGraph(coinName, APIdata, dateCalc) {
     },
   });
 
-  // Pizza Graph
+  function lightenColor(color) {
+    return color + "55"; // adiciona transparência
+  }
+
+  // Doughnut Graph
   new Chart(doughnut, {
     type: "doughnut",
     data: {
@@ -192,14 +196,34 @@ function bulildGraph(coinName, APIdata, dateCalc) {
       datasets: [
         {
           data: calcVol(APIdata, dateCalc),
-          backgroundColor: bgColors,
+
+          backgroundColor: bgColors, // centro mais escuro
+          borderColor: bgColors.map((c) => c + "AA"), // borda ainda mais marcada
+          borderWidth: 3,
+
+          hoverBorderWidth: 4,
+          spacing: 6, // separação maior entre fatias
         },
       ],
     },
     options: {
       plugins: {
         legend: {
-          display: false, // remover a legenda
+          position: "right",
+          labels: {
+            generateLabels(chart) {
+              const dataset = chart.data.datasets[0];
+
+              return chart.data.labels.map((label, i) => ({
+                text: label,
+                strokeStyle: dataset.borderColor[i],
+                fillStyle: dataset.backgroundColor[i] + "33",
+                lineWidth: 2,
+                hidden: false,
+                index: i,
+              }));
+            },
+          },
         },
       },
     },

@@ -226,7 +226,6 @@ button#reset:hover {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  gap: 10%;
 
   width: 100%;
   height: 100%;
@@ -256,19 +255,19 @@ button#reset:hover {
   width: 100%;
   height: 40%;
 
-  margin-bottom: 1%;
+  margin-bottom: 8%;
 }
 .barGraph {
-  width: 50%;
-  height: 45%;
-
-  margin-left: 5%;
-}
-.doughNut {
-  width: 50%;
+  width: 20%;
   height: 45%;
 
   margin-left: 6%;
+}
+.doughNut {
+  width: 20%;
+  height: 45%;
+
+  margin-left: 7%;
 }
 
 #lineGraph {
@@ -280,5 +279,5 @@ button#reset:hover {
 }
 
 .doughNut {
-  width: 22.45%;
+  width: 28%;
 }
