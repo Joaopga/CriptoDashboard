@@ -197,12 +197,12 @@ function bulildGraph(coinName, APIdata, dateCalc) {
         {
           data: calcVol(APIdata, dateCalc),
 
-          backgroundColor: bgColors, // centro mais escuro
-          borderColor: bgColors.map((c) => c + "AA"), // borda ainda mais marcada
-          borderWidth: 3,
+          backgroundColor: bgColors,
+          borderColor: bgColors.map((c) => c + "AA"),
+          borderWidth: 2,
 
           hoverBorderWidth: 4,
-          spacing: 6, // separação maior entre fatias
+          spacing: 6,
         },
       ],
     },
