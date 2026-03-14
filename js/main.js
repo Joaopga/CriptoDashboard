@@ -31,36 +31,53 @@ function dateErr(errCod) {
   if ((errMsgDiv != null) & (errCod === "remErr")) errMsgDiv.remove();
 }
 
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && input.value.trim() !== "") {
-    e.preventDefault();
+// Funcao de Criaca e Remocao de moedas
+// (Remocao somente com Backspace)
+input.addEventListener('focus', () => {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && input.value.trim() !== "") {
+      e.preventDefault();
 
-    const value = input.value.trim();
+      const value = input.value.trim();
 
-    // Cria o "placeholder"
-    coin = document.createElement("div");
-    coin.className = "coin_symbol";
-    coin.textContent = value;
+      // Cria o "placeholder"
+      coin = document.createElement("div");
+      coin.className = "coin_symbol";
+      coin.textContent = value;
 
-    // Botão de remoção
-    const remove = document.createElement("span");
-    remove.textContent = "x";
-    remove.onclick = () => coin.remove();
+      // Botão de remoção
+      const remove = document.createElement("span");
+      remove.className = "rmv";
+      remove.textContent = "x";
+      remove.onclick = () => coin.remove();
 
-    coin.appendChild(remove);
+      coin.appendChild(remove);
 
-    // Insere antes do input
-    coinInput.insertBefore(coin, input);
+      // Insere antes do input
+      coinInput.insertBefore(coin, input);
 
-    // Limpa o input
-    input.value = "";
+      // Limpa o input
+      input.value = "";
+    }
+    
+    if (e.key === 'Backspace'){
+      if (document.querySelectorAll('.coin_symbol')) {
+        let createdCoin = document.querySelectorAll('.coin_symbol')
+        let lastCoin = createdCoin[createdCoin.length - 1]
+        lastCoin.remove();
+      }
+    }
+  });
+})
+
+//Remocao das moeadas ao clicar no X
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('rmv')){
+    console.log('achou')
+    const coin = event.target.closest('.coin_symbol')
+    if (coin) coin.remove()
   }
-  /*
-  if (e.key === 'Backspace' && (coin.className)){
-    const remove = document.createElement('span');
-    coin.remove();
-  }*/
-});
+})
 
 // Pega valor DOM de moedas e data
 const filter = document.getElementById("filter");
