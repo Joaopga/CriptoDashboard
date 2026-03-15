@@ -73,7 +73,6 @@ body {
 
   margin: 3% 0 13% 0;
 
-  padding: 4%;
   border: 1px solid #ccc;
   border-radius: 5px;
 
@@ -83,12 +82,16 @@ body {
 
 .coin-input input {
   flex: 1;
-  min-width: 120px;
+  width: 25.7rem;
+  height: 4rem;
 
   border: none;
   outline: none;
 
   font-size: 16px;
+
+  padding: 6% 0 15% 5%;
+
 }
 
 .coin_symbol {

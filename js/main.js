@@ -31,9 +31,21 @@ function dateErr(errCod) {
   if ((errMsgDiv != null) & (errCod === "remErr")) errMsgDiv.remove();
 }
 
+function removeCoin(TobeRmv) {
+  if (document.querySelectorAll(".coin_symbol")) {
+    if (document.querySelectorAll(".coin_symbol").length > 0) {
+      input.placeholder = "";
+      TobeRmv.remove();
+    } else {
+      input.placeholder = "Digite o símbolo da moeda...";
+      TobeRmv.remove();
+    }
+  }
+}
+
 // Funcao de Criaca e Remocao de moedas
 // (Remocao somente com Backspace)
-input.addEventListener('focus', () => {
+input.addEventListener("focus", () => {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && input.value.trim() !== "") {
       e.preventDefault();
@@ -58,36 +70,41 @@ input.addEventListener('focus', () => {
 
       // Limpa o input
       input.value = "";
+
+      if (document.querySelectorAll(".coin_symbol").length > 0) {
+        input.placeholder = "";
+      } else {
+        input.placeholder = "Digite o símbolo da moeda...";
+      }
     }
-    
-    if (e.key === 'Backspace'){
-      if (document.querySelectorAll('.coin_symbol')) {
-        let createdCoin = document.querySelectorAll('.coin_symbol')
-        let lastCoin = createdCoin[createdCoin.length - 1]
-        lastCoin.remove();
+
+    if (e.key === "Backspace") {
+      if (document.querySelectorAll(".coin_symbol")) {
+        let createdCoin = document.querySelectorAll(".coin_symbol");
+        let lastCoin = createdCoin[createdCoin.length - 1];
+        removeCoin(lastCoin);
       }
     }
   });
-})
+});
 
 //Remocao das moeadas ao clicar no X
-document.addEventListener('click', (event) => {
-  if (event.target.classList.contains('rmv')){
-    console.log('achou')
-    const coin = event.target.closest('.coin_symbol')
-    if (coin) coin.remove()
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("rmv")) {
+    const coin = event.target.closest(".coin_symbol");
+    if (coin) removeCoin(coin);
   }
-})
+});
 
 // Pega valor DOM de moedas e data
 const filter = document.getElementById("filter");
 const coins = document.getElementsByClassName("coin_symbol");
 const titles = document.querySelectorAll(".graphs #graph-title");
 
-filter.addEventListener("click", (e) => {
+filter.addEventListener("click", (event) => {
   // Pegando informacoes de data
-  const date = document.getElementById("set-date").value;
-  const dateValue = document.getElementById("dateInput").value;
+  let date = document.getElementById("set-date").value;
+  let dateValue = document.getElementById("dateInput").value;
   let dateCalc = dateValue;
 
   // Valida se foi digitada pelo menos 1 moeda
@@ -120,6 +137,9 @@ filter.addEventListener("click", (e) => {
 
         coinName.push(coinFormatted);
       }
+
+      console.log(coinName)
+      console.log(dateCalc)
 
       // Chama API para montagem de grafico
       CallAPI(coinName, dateCalc);

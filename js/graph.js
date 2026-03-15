@@ -45,7 +45,13 @@ function calcVol(APIdata, dateCalc) {
   return volTotal;
 }
 
+let lineChart, barChart, doughnutChar // Declaro como global para apagar em caso de nova req
 function bulildGraph(coinName, APIdata, dateCalc) {
+
+  if (lineChart) lineChart.destroy();
+  if (barChart) barChart.destroy();
+  if (doughnutChar) doughnutChar.destroy();
+
   const barGraph = document.getElementById("barGraph").getContext("2d");
   const doughnut = document.getElementById("doughnut").getContext("2d");
   const lineGraph = document.getElementById("lineGraph").getContext("2d");
@@ -66,8 +72,6 @@ function bulildGraph(coinName, APIdata, dateCalc) {
   for (let i = 0; i < APIdata.length; i++) {
     coinSet.push({ APIdata });
   }
-
-  console.log(APIdata);
 
   // Criacao de Array para gráfico dividido por dias
   const hoje = new Date();
@@ -91,7 +95,7 @@ function bulildGraph(coinName, APIdata, dateCalc) {
   }));
 
   // Line Graph
-  new Chart(lineGraph, {
+  lineChart = new Chart(lineGraph, {
     type: "line",
     data: {
       labels: dayLabels,
@@ -138,7 +142,7 @@ function bulildGraph(coinName, APIdata, dateCalc) {
   });
 
   // Bar Graph
-  new Chart(barGraph, {
+  barChart = new Chart(barGraph, {
     type: "bar",
     data: {
       labels: coinName,
@@ -189,7 +193,7 @@ function bulildGraph(coinName, APIdata, dateCalc) {
   }
 
   // Doughnut Graph
-  new Chart(doughnut, {
+  doughnutChar = new Chart(doughnut, {
     type: "doughnut",
     data: {
       labels: coinName,
