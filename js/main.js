@@ -96,8 +96,9 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Pega valor DOM de moedas e data
+// Pega valor DOM de moedas, data e botoes de filtrar/resetar
 const filter = document.getElementById("filter");
+const reset = document.getElementById("reset");
 const coins = document.getElementsByClassName("coin_symbol");
 const titles = document.querySelectorAll(".graphs #graph-title");
 
@@ -138,9 +139,6 @@ filter.addEventListener("click", (event) => {
         coinName.push(coinFormatted);
       }
 
-      console.log(coinName)
-      console.log(dateCalc)
-
       // Chama API para montagem de grafico
       CallAPI(coinName, dateCalc);
 
@@ -151,3 +149,17 @@ filter.addEventListener("click", (event) => {
     }
   }
 });
+
+reset.addEventListener('click', () => {
+  let coins = document.querySelectorAll('.coin_symbol')
+  let period = document.getElementById('set-date')
+  let day = document.getElementById('dateInput')
+
+  for (let i = 0; i < coins.length+1; i++){
+      coins[i] ? removeCoin(coins[i]) : removeCoin(coins[i-1])
+  } 
+
+  period.value = "day"
+  day.value = "2"
+
+})
