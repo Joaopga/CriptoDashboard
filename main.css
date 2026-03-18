@@ -63,15 +63,22 @@ body {
 }
 
 /* ===== COIN INPUT ===== */
+#f-coins {
+  padding-left: 2.5%;
+}
+
 .coin-input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 
-  width: 100%;
-  min-height: 65%;
+  width: 96%;
+  height: 8rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
 
-  margin: 3% 0 13% 0;
+  margin: 3% 0 13% 2.5%;
 
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -82,8 +89,8 @@ body {
 
 .coin-input input {
   flex: 1;
-  width: 25.7rem;
-  height: 4rem;
+  min-width: 25.7rem;
+  max-height: 4rem;
 
   border: none;
   outline: none;

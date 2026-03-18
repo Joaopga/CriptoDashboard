@@ -32,18 +32,17 @@ function dateErr(errCod) {
 }
 
 function removeCoin(TobeRmv) {
-  if (document.querySelectorAll(".coin_symbol")) {
-    if (document.querySelectorAll(".coin_symbol").length > 0) {
-      input.placeholder = "";
-      TobeRmv.remove();
-    } else {
-      input.placeholder = "Digite o símbolo da moeda...";
-      TobeRmv.remove();
-    }
+  TobeRmv.remove();
+  let coin = document.querySelectorAll(".coin_symbol").length;
+
+  if (coin > 0) {
+    input.placeholder = "";
+  } else {
+    input.placeholder = "Digite o símbolo da moeda...";
   }
 }
 
-// Funcao de Criaca e Remocao de moedas
+// Funcao de Criacao e Remocao de moedas
 // (Remocao somente com Backspace)
 input.addEventListener("focus", () => {
   input.addEventListener("keydown", (e) => {
@@ -79,10 +78,12 @@ input.addEventListener("focus", () => {
     }
 
     if (e.key === "Backspace") {
-      if (document.querySelectorAll(".coin_symbol")) {
-        let createdCoin = document.querySelectorAll(".coin_symbol");
-        let lastCoin = createdCoin[createdCoin.length - 1];
-        removeCoin(lastCoin);
+      if(input.value === ""){
+        if (document.querySelectorAll(".coin_symbol")) {
+          let createdCoin = document.querySelectorAll(".coin_symbol");
+          let lastCoin = createdCoin[createdCoin.length - 1];
+          removeCoin(lastCoin);
+        }
       }
     }
   });
@@ -90,11 +91,12 @@ input.addEventListener("focus", () => {
 
 //Remocao das moeadas ao clicar no X
 document.addEventListener("click", (event) => {
-  if (event.target.classList.contains("rmv")) {
+  if (event.target.matches(".rmv")) {
     const coin = event.target.closest(".coin_symbol");
+    console.log("Removendo:", coin);  
     if (coin) removeCoin(coin);
   }
-});
+}); 
 
 // Pega valor DOM de moedas, data e botoes de filtrar/resetar
 const filter = document.getElementById("filter");
@@ -150,16 +152,15 @@ filter.addEventListener("click", (event) => {
   }
 });
 
-reset.addEventListener('click', () => {
-  let coins = document.querySelectorAll('.coin_symbol')
-  let period = document.getElementById('set-date')
-  let day = document.getElementById('dateInput')
+reset.addEventListener("click", () => {
+  let coins = document.querySelectorAll(".coin_symbol");
+  let period = document.getElementById("set-date");
+  let day = document.getElementById("dateInput");
 
-  for (let i = 0; i < coins.length+1; i++){
-      coins[i] ? removeCoin(coins[i]) : removeCoin(coins[i-1])
-  } 
+  for (let i = 0; i < coins.length + 1; i++) {
+    coins[i] ? removeCoin(coins[i]) : removeCoin(coins[i - 1]);
+  }
 
-  period.value = "day"
-  day.value = "2"
-
-})
+  period.value = "day";
+  day.value = "2";
+});
