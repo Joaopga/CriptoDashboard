@@ -164,6 +164,11 @@ body {
   margin-bottom: -11.39%;
 }
 
+#errMsg span {
+  padding: 0 2% 0 2%;
+  background-color: #514da4;
+}
+
 /* ===== QUANTIDADE ===== */
 .qtd-form {
   display: flex;

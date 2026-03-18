@@ -23,7 +23,7 @@ function dateErr(errCod) {
         break;
     }
 
-    errMsg.innerHTML = errTxt;
+    errMsg.innerHTML = "<span>" + errTxt + "</span>";
     formRow.insertAdjacentElement("afterend", errMsg);
 
     return;
@@ -41,6 +41,10 @@ function removeCoin(TobeRmv) {
     input.placeholder = "Digite o símbolo da moeda...";
   }
 }
+
+coinInput.addEventListener("click", () => {
+  input.focus()
+})
 
 // Funcao de Criacao e Remocao de moedas
 // (Remocao somente com Backspace)
@@ -156,11 +160,15 @@ reset.addEventListener("click", () => {
   let coins = document.querySelectorAll(".coin_symbol");
   let period = document.getElementById("set-date");
   let day = document.getElementById("dateInput");
-
-  for (let i = 0; i < coins.length + 1; i++) {
-    coins[i] ? removeCoin(coins[i]) : removeCoin(coins[i - 1]);
+  let errMsgDiv = document.querySelector("#errMsg");
+  
+  if (coins.length > 0){
+    for (let i = 0; i < coins.length + 1; i++) {
+      coins[i] ? removeCoin(coins[i]) : removeCoin(coins[i - 1]);
+    }
   }
 
+  if (errMsgDiv) errMsgDiv.remove()
   period.value = "day";
   day.value = "2";
 });
