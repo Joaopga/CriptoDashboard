@@ -64,7 +64,6 @@ input.addEventListener("focus", () => {
       const remove = document.createElement("span");
       remove.className = "rmv";
       remove.textContent = "x";
-      remove.onclick = () => coin.remove();
 
       coin.appendChild(remove);
 

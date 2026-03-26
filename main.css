@@ -67,6 +67,22 @@ body {
   padding-left: 2.5%;
 }
 
+.tip {
+  position: relative;
+  left: 33%;
+  font-size: 0.8em;
+
+  padding: 3% 4.5%;
+
+  outline: 3px solid #ffffff;
+  outline-offset: -12px;
+  border-radius: 50%;
+}
+
+.tip:hover {
+  cursor: pointer;
+}
+
 .coin-input {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +114,6 @@ body {
   font-size: 16px;
 
   padding: 6% 0 15% 5%;
-
 }
 
 .coin_symbol {
@@ -275,7 +290,7 @@ button#reset:hover {
 .barGraph {
   width: 45%;
   height: 45%;
-  
+
   margin-left: 2.9%;
 }
 
