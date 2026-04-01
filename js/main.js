@@ -96,7 +96,6 @@ input.addEventListener("focus", () => {
 document.addEventListener("click", (event) => {
   if (event.target.matches(".rmv")) {
     const coin = event.target.closest(".coin_symbol");
-    console.log("Removendo:", coin);  
     if (coin) removeCoin(coin);
   }
 }); 
