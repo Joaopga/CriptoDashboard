@@ -1,9 +1,11 @@
-
 .modalBg {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: #00000091;
+  background-color: #000000b9;
+
+  animation-name: modalBgColor;
+  animation-duration: 550ms;
 }
 
 .tpBox {
@@ -11,7 +13,7 @@
   width: 40%;
   height: 72%;
 
-  border: solid #514da4 3px;
+  border: solid #514da4 5px;
   border-radius: 11px;
 
   background-color: #f8f9fc;
@@ -23,6 +25,9 @@
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  animation-name: modalSlide;
+  animation-duration: 800ms;
 }
 
 .tpContent {
@@ -107,4 +112,14 @@ button#tpbtn {
 
 button#tpbtn:hover {
   background-color: #aca9db;
+}
+
+@keyframes modalBgColor {
+  from {background-color: #00000000}
+  to {background-color: #000000b9}
+}
+
+@keyframes modalSlide {
+  from {top: -45%}
+  to {top: 45%}
 }
