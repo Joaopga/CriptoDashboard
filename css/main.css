@@ -252,3 +252,12 @@ button#filter:hover,
 button#reset:hover {
   background-color: #aca9db;
 }
+
+@keyframes errorAdvice {
+  0% {background-color: #007bff;}
+  25% {background-color: #ff5b5b;}
+  50% {background-color: #007bff;}
+  70% {background-color: #ff5b5b;}
+  90% {background-color: #007bff;}
+  100% {background-color: #ff5b5b;}
+}

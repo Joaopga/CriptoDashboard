@@ -5,7 +5,7 @@ const input = document.getElementById("input");
 const coinInput = document.getElementById("coinInput");
 let coin;
 
-function dateErr(errCod) {
+export async function dateErr(errCod) {
   let formRow = document.querySelector(".form-row");
   let errMsg = document.createElement("div");
   let errMsgDiv = document.querySelector("#errMsg");
@@ -21,6 +21,10 @@ function dateErr(errCod) {
       case 1:
         errTxt = "A data precisa ser maior que um dia";
         break;
+      
+      case 2:
+        errTxt = "Não foi possível buscar a moeda";
+      break;
     }
 
     errMsg.innerHTML = "<span>" + errTxt + "</span>";
@@ -104,7 +108,6 @@ document.addEventListener("click", (event) => {
 const filter = document.getElementById("filter");
 const reset = document.getElementById("reset");
 const coins = document.getElementsByClassName("coin_symbol");
-const titles = document.querySelectorAll(".graphs #graph-title");
 
 filter.addEventListener("click", (event) => {
   // Pegando informacoes de data
@@ -145,11 +148,6 @@ filter.addEventListener("click", (event) => {
 
       // Chama API para montagem de grafico
       CallAPI(coinName, dateCalc);
-
-      //Removendo 'Hidden' dos títulos
-      titles.forEach((titles) => {
-        titles.classList.remove("hidden");
-      });
     }
   }
 });
@@ -168,5 +166,5 @@ reset.addEventListener("click", () => {
 
   if (errMsgDiv) errMsgDiv.remove()
   period.value = "day";
-  day.value = "2";
+  day.value = "7";
 });

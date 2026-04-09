@@ -1,5 +1,6 @@
 export async function req(coin, date) {
     let url =`https://api.binance.com/api/v3/klines?symbol=${coin}BRL&interval=1d&limit=${date}`
+    try {
     const response = await fetch(url);
     if (!response.ok) {
         throw new Error(`Erro na requisição: ${response.status}`);
@@ -7,6 +8,10 @@ export async function req(coin, date) {
     let JSONdata = await response.json();
     
     return JSONdata;
+    } catch (error) {
+        //console.log("ERRO: ", error.message)
+        return error.message;
+    }
 }
 
 

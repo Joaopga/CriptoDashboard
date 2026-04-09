@@ -1,4 +1,5 @@
 import { req } from "./api.js";
+import { dateErr } from "./main.js";
 
 export async function CallAPI(coinName, dateCalc) {
   let promises = [];
@@ -7,7 +8,7 @@ export async function CallAPI(coinName, dateCalc) {
     promises.push(req(coinName[i], dateCalc));
   }
   let APIdata = await Promise.all(promises);
-
+  
   bulildGraph(coinName, APIdata, dateCalc);
 }
 
@@ -45,8 +46,27 @@ function calcVol(APIdata, dateCalc) {
   return volTotal;
 }
 
-let lineChart, barChart, doughnutChar // Declaro como global para apagar em caso de nova req
+let lineChart, barChart, doughnutChar; // Declaro como global para apagar em caso de nova req
 function bulildGraph(coinName, APIdata, dateCalc) {
+ 
+  // Validacao de moeda digitada de forma incorreta
+  for(let i = 0; i < APIdata.length; i++) {
+    if (APIdata[i] === "Failed to fetch") {
+      const coins = document.getElementsByClassName("coin_symbol");
+      coins[i].style.animationDuration = '1200ms'
+      coins[i].style.animationName = 'errorAdvice'
+      coins[i].style.backgroundColor= '#ff5b5b'
+
+      dateErr(2);
+      return;
+    }
+  };
+
+  const titles = document.querySelectorAll(".graphs #graph-title");
+  //Removendo 'Hidden' dos títulos
+  titles.forEach((titles) => {
+    titles.classList.remove("hidden");
+  });
 
   if (lineChart) lineChart.destroy();
   if (barChart) barChart.destroy();
