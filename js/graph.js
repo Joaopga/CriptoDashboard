@@ -76,16 +76,16 @@ function bulildGraph(coinName, APIdata, dateCalc) {
   const doughnut = document.getElementById("doughnut").getContext("2d");
   const lineGraph = document.getElementById("lineGraph").getContext("2d");
   const bgColors = [
-    "#514da4",
-    "#ff6f61",
-    "#4db6ac",
-    "#ffd700",
-    "#d32f2f",
-    "#1976d2",
-    "#8e24aa",
-    "#ff8f00",
-    "#388e3c",
-    "#c2185b",
+    "#6366f1",
+    "#f43f5e",
+    "#14b8a6",
+    "#f59e0b",
+    "#ef4444",
+    "#3b82f6",
+    "#8b5cf6",
+    "#f97316",
+    "#22c55e",
+    "#ec4899",
   ];
 
   let coinSet = [];
@@ -110,8 +110,15 @@ function bulildGraph(coinName, APIdata, dateCalc) {
     label: coinName[i],
     data: coinData.slice(0, dateCalc).map((day) => Number(day[4])),
     borderColor: bgColors[i],
-    backgroundColor: bgColors[i] + "33",
-    tension: 0.3,
+    backgroundColor: bgColors[i] + "20",
+    tension: 0.4,
+    borderWidth: 2.5,
+    pointRadius: 0,
+    pointHoverRadius: 6,
+    pointHoverBackgroundColor: bgColors[i],
+    pointHoverBorderColor: '#ffffff',
+    pointHoverBorderWidth: 2,
+    fill: true,
   }));
 
   // Line Graph
@@ -124,10 +131,24 @@ function bulildGraph(coinName, APIdata, dateCalc) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
       scales: {
         y: {
+          grid: {
+            color: '#f1f5f9',
+          },
+          border: {
+            display: false,
+          },
           ticks: {
+            padding: 8,
+            font: {
+              size: 11,
+            },
+            color: '#64748b',
             callback: (value) =>
               new Intl.NumberFormat("pt-BR", {
                 style: "currency",
@@ -135,17 +156,58 @@ function bulildGraph(coinName, APIdata, dateCalc) {
               }).format(value),
           },
         },
+        x: {
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
+          ticks: {
+            padding: 8,
+            font: {
+              size: 11,
+            },
+            color: '#64748b',
+          },
+        },
       },
 
       plugins: {
         legend: {
           display: true,
+          position: 'top',
+          align: 'end',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            padding: 20,
+            font: {
+              size: 12,
+              weight: '500',
+            },
+            color: '#475569',
+          },
         },
         tooltip: {
+          backgroundColor: '#1e293b',
+          titleColor: '#f8fafc',
+          bodyColor: '#e2e8f0',
+          borderColor: '#334155',
+          borderWidth: 1,
+          cornerRadius: 8,
+          padding: 12,
+          titleFont: {
+            size: 13,
+            weight: '600',
+          },
+          bodyFont: {
+            size: 12,
+          },
           callbacks: {
             label: function (context) {
               // Formata para REAL BRL
-              return context.raw.toLocaleString("pt-BR", {
+              return context.dataset.label + ': ' + context.raw.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               }); //
@@ -169,25 +231,57 @@ function bulildGraph(coinName, APIdata, dateCalc) {
       datasets: [
         {
           data: variVal(APIdata, dateCalc),
-          backgroundColor: bgColors,
+          backgroundColor: bgColors.map(c => c + 'cc'),
+          borderColor: bgColors,
+          borderWidth: 2,
+          borderRadius: 8,
+          borderSkipped: false,
         },
       ],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       interaction: {
         mode: "index",
         intersect: false,
       },
       scales: {
         y: {
+          grid: {
+            color: '#f1f5f9',
+          },
+          border: {
+            display: false,
+          },
           ticks: {
+            padding: 8,
+            font: {
+              size: 11,
+            },
             callback: (value) => value + "%",
 
             color: function (context) {
               const v = context.tick.value;
-              if (v === 0) return "#000000";
+              if (v === 0) return "#64748b";
               return v > 0 ? "#22c55e" : "#ef4444";
             },
+          },
+        },
+        x: {
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
+          ticks: {
+            padding: 8,
+            font: {
+              size: 12,
+              weight: '500',
+            },
+            color: '#475569',
           },
         },
       },
@@ -196,10 +290,17 @@ function bulildGraph(coinName, APIdata, dateCalc) {
           display: false, // remover a legenda
         },
         tooltip: {
+          backgroundColor: '#1e293b',
+          titleColor: '#f8fafc',
+          bodyColor: '#e2e8f0',
+          borderColor: '#334155',
+          borderWidth: 1,
+          cornerRadius: 8,
+          padding: 12,
           callbacks: {
             label: function (context) {
               const v = context.parsed.y;
-              const icon = v >= 0 ? "▲ " : "▼ ";
+              const icon = v >= 0 ? " ▲" : " ▼";
               return Math.abs(v) + "%" + icon;
             },
           },
@@ -221,33 +322,54 @@ function bulildGraph(coinName, APIdata, dateCalc) {
         {
           data: calcVol(APIdata, dateCalc),
 
-          backgroundColor: bgColors,
-          borderColor: bgColors.map((c) => c + "AA"),
-          borderWidth: 2,
+          backgroundColor: bgColors.map(c => c + 'cc'),
+          borderColor: '#ffffff',
+          borderWidth: 3,
 
-          hoverBorderWidth: 4,
-          spacing: 6,
+          hoverBorderWidth: 0,
+          hoverOffset: 8,
+          spacing: 2,
         },
       ],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '65%',
       plugins: {
         legend: {
           position: "right",
           labels: {
+            usePointStyle: true,
+            pointStyle: 'circle',
+            padding: 16,
+            font: {
+              size: 12,
+              weight: '500',
+            },
+            color: '#475569',
             generateLabels(chart) {
               const dataset = chart.data.datasets[0];
 
               return chart.data.labels.map((label, i) => ({
                 text: label,
-                strokeStyle: dataset.borderColor[i],
-                fillStyle: dataset.backgroundColor[i] + "33",
-                lineWidth: 2,
+                strokeStyle: 'transparent',
+                fillStyle: bgColors[i],
+                lineWidth: 0,
                 hidden: false,
                 index: i,
               }));
             },
           },
+        },
+        tooltip: {
+          backgroundColor: '#1e293b',
+          titleColor: '#f8fafc',
+          bodyColor: '#e2e8f0',
+          borderColor: '#334155',
+          borderWidth: 1,
+          cornerRadius: 8,
+          padding: 12,
         },
       },
     },
