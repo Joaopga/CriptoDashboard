@@ -195,12 +195,6 @@ body {
 }
 
 .date-input {
-
-  border: 2px solid #e2e8f0;
-  border-radius: 25px;
-  padding: 35% 6%;
-  
-  background: #ffffff;
   font-family: inherit;
   color: #334155;
   
@@ -218,7 +212,7 @@ body {
   height: 100%;
 
   margin-top: 5%;
-  padding: 5% 6%;
+  padding: 5% 4%;
 
   border: 2px solid #e2e8f0;
   border-radius: 10px;
@@ -284,12 +278,12 @@ body {
 }
 
 .qtd-form input {
-  padding: 5% 6%;
+  padding: 9.095% 5%;
   border: 2px solid #e2e8f0;
 
-  margin-top: 3.8%;
+  margin-top: 3.5%;
 
-  border-radius: 5%;
+  border-radius: 10px;
 
   font-size: 0.85em;
   font-family: inherit;
@@ -342,7 +336,7 @@ button#reset {
   padding: 4% 6%;
 
   border: none;
-  border-radius: 5%;
+  border-radius: 15px;
 
   cursor: pointer;
   transition: all 0.25s ease;
