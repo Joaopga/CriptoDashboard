@@ -62,30 +62,34 @@
 
 .lineGraph {
   width: 100%;
-  height: 40%;
+  height: 50%;
 
-  margin-bottom: 24px;
-  padding: 24px;
+  margin-bottom: 2%;
+  padding: 1% 0 4% 0;
 }
 
 .barGraph {
-  width: 45%;
+  width: 50%;
   height: 45%;
 
   margin-left: 0;
-  padding: 24px;
+  padding: 1% 1% 3.5% 1%;
 }
 
 .doughNut {
-  width: 30.5%;
+  width: 48% !important;
+  height: 45%;
 
-  padding: 24px;
   margin-left: auto;
 }
 
 #doughnut {
-  margin-top: -5%;
+  width: 100% !important;
+  max-height: 80%;
+
+  margin: -2% 20% 0 0;
 }
+
 
 /* ===== EMPTY STATE ===== */
 .lineGraph:empty::before,

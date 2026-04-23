@@ -62,10 +62,15 @@ function bulildGraph(coinName, APIdata, dateCalc) {
     }
   };
 
-  const titles = document.querySelectorAll(".graphs #graph-title");
+  const titles = [
+     document.querySelector(".lineGraph"),
+     document.querySelector(".barGraph"),
+     document.querySelector(".doughNut")
+    ]
   //Removendo 'Hidden' dos títulos
   titles.forEach((titles) => {
     titles.classList.remove("hidden");
+    console.log(titles)
   });
 
   if (lineChart) lineChart.destroy();
@@ -166,7 +171,7 @@ function bulildGraph(coinName, APIdata, dateCalc) {
           ticks: {
             padding: 8,
             font: {
-              size: 11,
+              size: 13,
             },
             color: '#64748b',
           },
@@ -335,7 +340,7 @@ function bulildGraph(coinName, APIdata, dateCalc) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      cutout: '65%',
+      cutout: '50%',
       plugins: {
         legend: {
           position: "right",
@@ -344,7 +349,7 @@ function bulildGraph(coinName, APIdata, dateCalc) {
             pointStyle: 'circle',
             padding: 16,
             font: {
-              size: 12,
+              size: 15,
               weight: '500',
             },
             color: '#475569',

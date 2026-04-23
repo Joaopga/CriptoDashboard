@@ -5,9 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CriptoDashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/graph.css" />
     <link rel="stylesheet" href="css/tooltip.css" />
@@ -15,17 +18,19 @@
   </head>
   <body>
     <div class="dash-side-bar">
-      <img src="img/logo.png" class="logo" />
+      <div class="logo">
+        <img src="img/logo.png" />
+      </div>
 
       <div class="dash-form">
         <div class="coin-form">
           <span id="f-coins">Moedas Selecionadas</span>
           <span class="tip" id="coin-tooltip">?</span>
           <div class="coin-input" id="coinInput">
-           <div class="coin_symbol">SOL<span class="rmv">x</span></div>
+            <!--<div class="coin_symbol">SOL<span class="rmv">x</span></div>
             <div class="coin_symbol">BNB<span class="rmv">x</span></div>
             <div class="coin_symbol">XRP<span class="rmv">x</span></div>
-            <div class="coin_symbol">ETH<span class="rmv">x</span></div>
+            <div class="coin_symbol">ETH<span class="rmv">x</span></div>-->
 
             <input
               type="text"
@@ -39,7 +44,7 @@
         <div class="form-row">
           <div class="date-form">
             <div class="date-select" id="dateSelec">
-              <span id="f-date">Período</span>
+              <span id="f-date">Unidade</span>
               <select name="date" id="set-date">
                 <option value="day">Dia</option>
                 <option value="week">Semana</option>
@@ -49,7 +54,7 @@
           </div>
 
           <div class="qtd-form">
-            <span id="f-qtd">Quantidade</span>
+            <span id="f-qtd">Duração</span>
             <input
               type="number"
               class="date-input"
@@ -72,18 +77,18 @@
     </div>
 
     <div class="graphs">
-      <div class="lineGraph">
-        <div id="graph-title" class="hidden">Valor de Fechamento</div>
+      <div class="lineGraph hidden">
+        <div id="graph-title" >Valor de Fechamento</div>
         <canvas id="lineGraph"></canvas>
       </div>
 
-      <div class="barGraph">
-        <div id="graph-title" class="hidden">Variação No Valor (%)</div>
+      <div class="barGraph hidden">
+        <div id="graph-title">Variação No Valor (%)</div>
         <canvas id="barGraph"></canvas>
       </div>
 
-      <div class="doughNut">
-        <div id="graph-title" class="hidden">Volume de Vendas</div>
+      <div class="doughNut hidden">
+        <div id="graph-title">Volume de Vendas</div>
         <canvas id="doughnut"></canvas>
       </div>
     </div>

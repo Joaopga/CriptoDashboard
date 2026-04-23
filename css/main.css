@@ -22,10 +22,16 @@ body {
 /* ===== LOGO ===== */
 .logo {
   width: 100%;
-  margin: 10% 0 20% 0;
+  margin: 0 0 30% 0;
+  
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
+.logo img {
+  width: 100%;
+  transform: scale(1.4);
+  
+}
 /* ===== SIDEBAR ===== */
 .dash-side-bar {
   display: flex;
@@ -40,7 +46,7 @@ body {
 
   color: #ffffff;
   padding: 4% 3%;
-  
+
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
 }
 
@@ -61,7 +67,7 @@ body {
 
 .form-row {
   display: flex;
-  width: 100%;
+  width: 115%;
 
   gap: 3%;
 }
@@ -85,7 +91,7 @@ body {
   outline: 2px solid rgba(255, 255, 255, 0.8);
   outline-offset: -10px;
   border-radius: 50%;
-  
+
   transition: all 0.2s ease;
   opacity: 0.8;
 }
@@ -115,14 +121,18 @@ body {
 
   background-color: #ffffff;
   cursor: text;
-  
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease;
 }
 
 .coin-input:focus-within {
   border-color: #6366f1;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15), 0 0 0 3px rgba(99, 102, 241, 0.1);
+  box-shadow:
+    0 4px 12px rgba(99, 102, 241, 0.15),
+    0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .coin-input input {
@@ -157,7 +167,7 @@ body {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.03em;
-  
+
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
   transition: all 0.2s ease;
 }
@@ -197,7 +207,7 @@ body {
 .date-input {
   font-family: inherit;
   color: #334155;
-  
+
   transition: all 0.2s ease;
 }
 
@@ -209,7 +219,7 @@ body {
 
 .date-select select {
   width: 100%;
-  height: 100%;
+  height: 85%;
 
   margin-top: 5%;
   padding: 5% 4%;
@@ -221,7 +231,7 @@ body {
   font-family: inherit;
   color: #334155;
   background: #ffffff;
-  
+
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -248,8 +258,8 @@ body {
   font-weight: 500;
   color: #fca5a5;
 
-  margin-bottom: -11.39%;
-  
+  margin-bottom: -16.5%;
+
   animation: shake 0.4s ease;
 }
 
@@ -261,9 +271,16 @@ body {
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 /* ===== QUANTIDADE ===== */
@@ -278,10 +295,10 @@ body {
 }
 
 .qtd-form input {
-  padding: 9.095% 5%;
+  padding: 8.58% 5%;
   border: 2px solid #e2e8f0;
 
-  margin-top: 3.5%;
+  margin-top: 4.5%;
 
   border-radius: 10px;
 
@@ -289,7 +306,7 @@ body {
   font-family: inherit;
   color: #334155;
   background: #ffffff;
-  
+
   transition: all 0.2s ease;
 }
 
@@ -358,25 +375,37 @@ button#filter:active {
 }
 
 button#reset {
-  color: #64748b;
-  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff98;
+  background: rgba(30, 27, 75, 0.322);
   border: 2px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
 }
 
 button#reset:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(87, 83, 148, 0.322);
   border-color: rgba(255, 255, 255, 0.5);
   color: #ffffff;
 }
 
 @keyframes errorAdvice {
-  0% {background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);}
-  25% {background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);}
-  50% {background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);}
-  70% {background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);}
-  90% {background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);}
-  100% {background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);}
+  0% {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
+  25% {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
+  70% {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+  90% {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
+  100% {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
 }
 
 /* ===== SCROLLBAR ===== */
